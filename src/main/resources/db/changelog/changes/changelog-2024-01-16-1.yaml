@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-01-16-1
+      author: Soroka
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+        - createTable:
+            tableName: code
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: snippet
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: availability
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expire_at
+                  type: timestamp
+              - column:
+                  name: created
+                  type: timestamp
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false

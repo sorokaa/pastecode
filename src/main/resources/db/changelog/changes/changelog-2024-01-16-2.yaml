@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-01-16-2
+      author: Soroka
+      changes:
+        - addColumn:
+            tableName: code
+            columns:
+              - column:
+                  name: password
+                  type: varchar(255)

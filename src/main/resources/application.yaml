@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+    hikari:
+      username: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+      schema: pastecode
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  liquibase:
+    change-log: db/changelog/master-changelog.yaml
+    default-schema: pastecode
+
+keycloak:
+  keycloak-url: ${KEYCLOAK_URL}
+  realm: ${KEYCLOAK_REALM}
+  admin-console:
+    client-id: ${KEYCLOAK_CLIENT_ID}
+    client-secret: ${KEYCLOAK_CLIENT_SECRET}
+
+springdoc:
+  default-produces-media-type: application/json

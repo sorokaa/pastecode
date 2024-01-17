@@ -1,0 +1,10 @@
+db:
+  schema: pastecode
+
+spring:
+  liquibase:
+    enabled: true
+    change-log: db/changelog/master-changelog.yaml
+    default-schema: ${db.schema}
+  profiles:
+    active: test
